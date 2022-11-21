@@ -1,9 +1,11 @@
 package database.model;
 
+import gui.model.StudentGuiModel;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -41,4 +43,8 @@ public class StudentEntity {
                     name = "subject_id",  referencedColumnName = "id"))
     private Collection<SubjectEntity> subjects;
     */
+
+    public StudentGuiModel toStudentGuiModel() {
+        return new ModelMapper().map(this, StudentGuiModel.class);
+    }
 }
